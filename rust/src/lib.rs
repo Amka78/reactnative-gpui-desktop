@@ -20,15 +20,55 @@ impl GpuINode {
                     el = el.bg(color);
                 }
             }
+            if let Some(color) = style.get("color").and_then(|v| v.as_str()) {
+                if let Some(c) = parse_hex_color(color) {
+                    el = el.text_color(c);
+                }
+            }
             if let Some(padding) = style.get("padding").and_then(|v| v.as_f64()) {
                 el = el.p(px(padding as f32));
+            }
+            if let Some(margin) = style.get("margin").and_then(|v| v.as_f64()) {
+                el = el.m(px(margin as f32));
+            }
+            if let Some(w) = style.get("width").and_then(|v| v.as_f64()) {
+                el = el.w(px(w as f32));
+            }
+            if let Some(h) = style.get("height").and_then(|v| v.as_f64()) {
+                el = el.h(px(h as f32));
+            }
+            if let Some(r) = style.get("borderRadius").and_then(|v| v.as_f64()) {
+                el = el.rounded(px(r as f32));
+            }
+            if let Some(bw) = style.get("borderWidth").and_then(|v| v.as_f64()) {
+                el = el.border(px(bw as f32));
+            }
+            if let Some(bc) = style.get("borderColor").and_then(|v| v.as_str()) {
+                if let Some(c) = parse_hex_color(bc) {
+                    el = el.border_color(c);
+                }
+            }
+            if let Some(fs) = style.get("fontSize").and_then(|v| v.as_f64()) {
+                el = el.text_size(px(fs as f32));
+            }
+            if let Some(gap) = style.get("gap").and_then(|v| v.as_f64()) {
+                el = el.gap(px(gap as f32));
+            }
+            // Flex layout
+            if style.get("display").and_then(|v| v.as_str()) == Some("flex") {
+                el = el.flex();
+            }
+            if let Some(dir) = style.get("flexDirection").and_then(|v| v.as_str()) {
+                match dir {
+                    "column" => el = el.flex_col(),
+                    "row" => el = el.flex_row(),
+                    _ => {}
+                }
             }
         }
 
         if let Some(content) = self.props.get("content").and_then(|v| v.as_str()) {
-            el = el.child(
-                div().child(content.to_string())
-            );
+            el = el.child(div().child(content.to_string()));
         }
 
         for child in self.children {

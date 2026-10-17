@@ -35,7 +35,7 @@ React Native記法でDesktopアプリを作成するためのライブラリ。R
 
 - ⚠️ open_window のWSL環境での動作未検証（Wayland/X11必要）
 - ❌ イベントハンドリング未実装
-- ❌ スタイルプロパティの完全なマッピング未実装
+- ⚠️ スタイルプロパティは主要14種対応済み（backgroundColor, color, padding, margin, width, height, borderRadius, borderWidth, borderColor, fontSize, gap, display, flexDirection）
 
 ## 次のステップ
 
