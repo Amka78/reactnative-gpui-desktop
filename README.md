@@ -39,15 +39,18 @@ React Native記法でDesktopアプリを作成するためのライブラリ。R
 
 ## 次のステップ
 
-1. **GPUI-CE統合**
-   - GPUI-CEリポジトリのクローンとAPI調査
-   - Rust側でView/TextのGPUIレンダリング実装
-   - ウィンドウ作成・イベントループ実装
+1. **イベントハンドリング**
+   - napi-rs ThreadsafeFunction で Rust → JS コールバック実装
+   - onPress / onClick の GPUI → JS 伝達
 
-2. **機能拡張**
-   - スタイルプロパティの実装
-   - イベントハンドリング
-   - レイアウト計算
+2. **WSL環境でのGUIテスト**
+   - Wayland/X11 設定
+   - open_window 関数の動作検証
+
+3. **追加機能**
+   - レイアウト計算の拡張
+   - アニメーション対応
+   - 追加コンポーネント（TextInput, ScrollView等）
 
 ## 使い方
 
