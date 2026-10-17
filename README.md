@@ -28,11 +28,14 @@ React Native記法でDesktopアプリを作成するためのライブラリ。R
 - ✅ Rust 1.99.1 アップグレード（rustup-init手動DL）
 - ✅ Rustバインディング基礎実装（napi-rs、View/Textノード受渡）
 - ✅ JS ↔ Rust FFI統合テスト成功
+- ✅ GPUI依存追加・ビルド成功（Zed gpui crate v0.2.2）
+- ✅ GPUIレンダリング実装（div()ベースのView/Text変換）
 
 ### 課題
 
-- ❌ GPUI-CE実際の統合（レンダリングパイプライン未実装）
-- ❌ ウィンドウ作成・イベントループ未実装
+- ⚠️ open_window のWSL環境での動作未検証（Wayland/X11必要）
+- ❌ イベントハンドリング未実装
+- ❌ スタイルプロパティの完全なマッピング未実装
 
 ## 次のステップ
 
