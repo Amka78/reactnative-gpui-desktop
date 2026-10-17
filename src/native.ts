@@ -15,3 +15,13 @@ export function renderTree(treeJson: string): string {
 export function createWindow(title: string, width: number, height: number): void {
   nativeModule.createWindow(title, width, height);
 }
+
+export function open_window_with_events(
+  title: string,
+  width: number,
+  height: number,
+  treeJson: string,
+  onEvent: (eventId: string) => void
+): void {
+  nativeModule.openWindowWithEvents(title, width, height, treeJson, onEvent);
+}
