@@ -1,0 +1,36 @@
+{
+  "name": "react-gpui-desktop",
+  "version": "0.1.0",
+  "description": "React + GPUI Desktop rendering engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "example": "npm run build && node examples/counter.js"
+  },
+  "keywords": [
+    "react",
+    "react-reconciler",
+    "desktop",
+    "gpui",
+    "gpu",
+    "renderer"
+  ],
+  "author": "Amemiya Hikaru",
+  "license": "MIT",
+  "type": "module",
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "dependencies": {
+    "react-reconciler": "^0.31.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.0.0",
+    "@types/react-reconciler": "^0.34.0",
+    "react": "^19.0.0",
+    "typescript": "^5.0.0"
+  }
+}
