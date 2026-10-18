@@ -1,3 +1,5 @@
-export { View, Text } from './components.js';
-export { render, reconciler } from './renderer.js';
-export type { GPUIViewNode } from './renderer.js';
+export { View } from './components/View';
+export { Text } from './components/Text';
+export { Image } from './components/Image';
+export { StyleSheet } from './StyleSheet';
+export { render } from '@gpuix/react';

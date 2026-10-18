@@ -1,19 +1,22 @@
 {
-  "name": "react-gpui-desktop",
+  "name": "react-native-gpuix",
   "version": "0.1.0",
-  "description": "React + GPUI Desktop rendering engine",
+  "description": "React Native compatible API for gpuix (GPU-accelerated desktop apps)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "example": "npm run build && node examples/counter.js"
+    "example": "bash scripts/run-gpuix.sh --hot examples/counter.tsx",
+    "example:once": "bash scripts/run-gpuix.sh examples/counter.tsx",
+    "storybook": "bash scripts/run-gpuix.sh --hot examples/storybook.tsx",
+    "storybook:once": "bash scripts/run-gpuix.sh examples/storybook.tsx"
   },
   "keywords": [
-    "react",
-    "react-reconciler",
-    "desktop",
+    "react-native",
+    "gpuix",
     "gpui",
+    "desktop",
     "gpu",
     "renderer"
   ],
@@ -24,12 +27,10 @@
     "react": "^19.0.0"
   },
   "dependencies": {
-    "react-reconciler": "^0.31.0"
+    "@gpuix/react": "latest"
   },
   "devDependencies": {
-    "@types/node": "^26.6.5",
     "@types/react": "^19.0.0",
-    "@types/react-reconciler": "^0.34.0",
     "react": "^19.0.0",
     "typescript": "^5.0.0"
   }

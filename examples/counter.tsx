@@ -1,40 +1,50 @@
-import React, { useState } from 'react';
-import { View, Text, render } from '../../dist/index.js';
+import { useState } from 'react';
+import { View, Text, StyleSheet, render } from '../src/index';
 
-function Counter() {
+export function App() {
   const [count, setCount] = useState(0);
 
-  return React.createElement(View, { style: { padding: 20 } },
-    React.createElement(Text, { style: { fontSize: 24 } }, `Count: ${count}`),
-    React.createElement(View, {
-      onPress: () => setCount(count + 1),
-      style: { padding: 10, backgroundColor: '#007bff' }
-    },
-      React.createElement(Text, { style: { color: 'white' } }, 'Increment')
-    )
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Counter</Text>
+      <View
+        style={styles.button}
+        onClick={() => setCount((c) => c + 1)}
+        testID="counter-button"
+      >
+        <Text style={styles.buttonText}>Count: {count}</Text>
+      </View>
+    </View>
   );
 }
 
-// GPUIコンテナ（モック）
-const container = {
-  type: 'root',
-  props: {},
-  children: [],
-  parent: null,
-};
+const styles = StyleSheet.create({
+  container: {
+    padding: 24,
+    backgroundColor: '#1a1a1a',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    color: '#e2e2e2',
+    fontSize: 32,
+    marginBottom: 24,
+  },
+  button: {
+    padding: 12,
+    borderRadius: 8,
+    backgroundColor: '#232323',
+    cursor: 'pointer',
+  },
+  buttonText: {
+    color: '#e2e2e2',
+    fontSize: 18,
+  },
+});
 
-render(React.createElement(Counter), container);
-
-function serializeNode(node: any): any {
-  const { children: childContent, ...safeProps } = node.props || {};
-  const serialized: any = { type: node.type, props: safeProps };
-  if (typeof childContent === 'string' || typeof childContent === 'number') {
-    serialized.props.content = String(childContent);
-  }
-  if (node.children.length > 0) {
-    serialized.children = node.children.map(serializeNode);
-  }
-  return serialized;
+if (import.meta.main) {
+  render(<App />, { title: 'Counter Example', width: 400, height: 300 });
 }
-
-console.log('Rendered tree:', JSON.stringify(serializeNode(container), null, 2));
